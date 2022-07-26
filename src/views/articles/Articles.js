@@ -16,9 +16,9 @@
 
 */
 // reactstrap components
-import { useState, useEffect } from "react";
-import api from "api";
-import { Store, UpdateStore } from "StoreContext";
+import { useState, useEffect } from 'react';
+import api from 'api';
+import { Store, UpdateStore } from 'StoreContext';
 import {
   Badge,
   Card,
@@ -33,13 +33,13 @@ import {
   Table,
   Container,
   Row,
-  UncontrolledTooltip,
-} from "reactstrap";
+  UncontrolledTooltip
+} from 'reactstrap';
 // core components
-import AddArticle from "./AddArticle";
-import EditArticle from "./EditArticle";
-import Header from "components/Headers/Header.js";
-import { toast } from "react-toastify";
+import AddArticle from './AddArticle';
+import EditArticle from './EditArticle';
+import Header from 'components/Headers/Header.js';
+import { toast } from 'react-toastify';
 
 const Articles = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -53,7 +53,7 @@ const Articles = () => {
   }, []);
 
   const getArticles = async () => {
-    const data = await api("get", "/blogs");
+    const data = await api('get', '/blogs');
 
     if (data) {
       updateStore({ articles: data });
@@ -72,13 +72,13 @@ const Articles = () => {
   };
 
   const handleDelete = (id) => {
-    api("delete", `/blogs/${id}`)
+    api('delete', `/blogs/${id}`)
       .then(() => {
-        toast.success("Article deleted successfully");
+        toast.success('Article deleted successfully');
         getArticles();
       })
       .catch(() => {
-        toast.error("An error occurred while deleting");
+        toast.error('An error occurred while deleting');
       });
   };
 
@@ -141,7 +141,7 @@ const Articles = () => {
                                 title={article.blog_title}
                               >
                                 {article.blog_title?.length > 30
-                                  ? article.blog_title?.substring(0, 30) + "..."
+                                  ? article.blog_title?.substring(0, 30) + '...'
                                   : article.blog_title}
                               </span>
                             </Media>
@@ -149,7 +149,7 @@ const Articles = () => {
                         </th>
                         <td title={article.blog_desc}>
                           {article.blog_desc?.length > 30
-                            ? article.blog_desc?.substring(0, 30) + "..."
+                            ? article.blog_desc?.substring(0, 30) + '...'
                             : article.blog_desc}
                         </td>
                         <td>
@@ -178,8 +178,8 @@ const Articles = () => {
                                 onClick={() =>
                                   window
                                     .open(
-                                      `https://orientator.com/blog/${article._id}`,
-                                      "_blank"
+                                      `https://dirasat-international.com/blog/${article._id}`,
+                                      '_blank'
                                     )
                                     .focus()
                                 }

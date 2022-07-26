@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Store, UpdateStore } from "StoreContext";
-import api from "api";
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Store, UpdateStore } from 'StoreContext';
+import api from 'api';
+import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import {
   Badge,
@@ -21,11 +21,11 @@ import {
   Pagination,
   PaginationItem,
   PaginationLink,
-  UncontrolledTooltip,
-} from "reactstrap";
+  UncontrolledTooltip
+} from 'reactstrap';
 
 // core components
-import Header from "components/Headers/Header.js";
+import Header from 'components/Headers/Header.js';
 
 const SingleUser = () => {
   const { id } = useParams();
@@ -41,13 +41,14 @@ const SingleUser = () => {
 
   let getUserResults = async () => {
     setLoading(true);
-    let res = await api("get", `/admin/results/user-results/${id}`);
+    let res = await api('get', `/admin/results/user-results/${id}`);
     if (res) {
+      console.log('res', res);
       updateStore({ singleUserResults: res?.result });
       setLoading(false);
     }
   };
-  console.log("singleUserResults are", singleUserResults);
+  console.log('singleUserResults are', singleUserResults);
 
   return (
     <>

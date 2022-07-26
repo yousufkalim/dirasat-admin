@@ -15,20 +15,20 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import { useLocation, Route, Switch, Redirect } from "react-router-dom";
-import api from "api";
-import { Store, UpdateStore } from "StoreContext";
+import React from 'react';
+import { useLocation, Route, Switch, Redirect } from 'react-router-dom';
+import api from 'api';
+import { Store, UpdateStore } from 'StoreContext';
 // reactstrap components
-import { Container } from "reactstrap";
+import { Container } from 'reactstrap';
 // core components
-import AdminNavbar from "components/Navbars/AdminNavbar.js";
-import AdminFooter from "components/Footers/AdminFooter.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
-import SingleUser from "views/users/SingleUser.js";
-import SingleResult from "views/users/SingleResult.js";
+import AdminNavbar from 'components/Navbars/AdminNavbar.js';
+import AdminFooter from 'components/Footers/AdminFooter.js';
+import Sidebar from 'components/Sidebar/Sidebar.js';
+import SingleUser from 'views/users/SingleUser.js';
+import SingleResult from 'views/users/SingleResult.js';
 
-import routes from "routes.js";
+import routes from 'routes.js';
 
 const Admin = (props) => {
   const mainContent = React.useRef(null);
@@ -43,18 +43,18 @@ const Admin = (props) => {
     mainContent.current.scrollTop = 0;
 
     // checkauth
-    api("get", "/admins/auth").then((data) => {
+    api('get', '/admins/auth').then((data) => {
       updateStore({
         loggedIn: true,
         token: data.token,
-        user: data.admin,
+        user: data.admin
       });
     });
   }, [location]);
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin" && loggedIn) {
+      if (prop.layout === '/admin' && loggedIn) {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -77,7 +77,7 @@ const Admin = (props) => {
         return routes[i].name;
       }
     }
-    return "Brand";
+    return 'Brand';
   };
   return (
     <>
@@ -85,9 +85,9 @@ const Admin = (props) => {
         {...props}
         routes={routes}
         logo={{
-          innerLink: "/admin/index",
-          imgSrc: require("../assets/img/brand/logo1.png").default,
-          imgAlt: "...",
+          innerLink: '/admin/index',
+          imgSrc: require('../assets/img/brand/dlogo.png').default,
+          imgAlt: '...'
         }}
       />
       <div className="main-content" ref={mainContent}>
@@ -96,18 +96,10 @@ const Admin = (props) => {
           brandText={getBrandText(props.location.pathname)}
         />
         <Switch>
-        <Route
-            exact
-            path="/admin/users/:id"
-            component={SingleUser}
-          />
-          <Route
-            exact
-            path="/admin/result/:id"
-            component={SingleResult}
-          />
+          <Route exact path="/admin/users/:id" component={SingleUser} />
+          <Route exact path="/admin/result/:id" component={SingleResult} />
           {getRoutes(routes)}
-           
+
           <Redirect from="*" to="/admin/index" />
         </Switch>
         <Container fluid>
