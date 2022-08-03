@@ -43,6 +43,7 @@ const SingleUser = () => {
     setLoading(true);
     let res = await api('get', `/admin/results/user-results/${id}`);
     if (res) {
+      console.log('res', res);
       updateStore({ singleUserResults: res?.result });
       setLoading(false);
     }

@@ -3,6 +3,9 @@ import JoditEditor from 'jodit-react';
 export default function Index(props) {
   const editor = useRef(null);
   const config = {
+    askBeforePasteHTML: false,
+    askBeforePasteFromWord: false,
+    defaultActionOnPaste: 'insert_clear_html',
     readonly: false,
     enableDragAndDropFileToEditor: true,
     uploader: {

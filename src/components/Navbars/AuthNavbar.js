@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 // reactstrap components
 import {
   UncontrolledCollapse,
@@ -26,8 +26,8 @@ import {
   Nav,
   Container,
   Row,
-  Col,
-} from "reactstrap";
+  Col
+} from 'reactstrap';
 
 const AdminNavbar = () => {
   return (
@@ -39,7 +39,7 @@ const AdminNavbar = () => {
               alt="..."
               src={require("../../assets/img/brand/passtotrip.png").default}
             /> */}
-            <strong>Orientator</strong>
+            <strong>Dirasat</strong>
           </NavbarBrand>
           <button className="navbar-toggler" id="navbar-collapse-main">
             <span className="navbar-toggler-icon" />
@@ -52,7 +52,7 @@ const AdminNavbar = () => {
                     <img
                       alt="..."
                       src={
-                        require("../../assets/img/brand/argon-react.png")
+                        require('../../assets/img/brand/argon-react.png')
                           .default
                       }
                     />
