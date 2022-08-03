@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import MyUploadAdapter from "utils/MyUploadAdapter";
-import JoditEditor from "./TextEditor";
-import api from "../../api";
+import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import MyUploadAdapter from 'utils/MyUploadAdapter';
+import JoditEditor from './TextEditor';
+import api from '../../api';
 import {
   Modal,
   ModalBody,
@@ -16,13 +16,13 @@ import {
   Input,
   Row,
   Col,
-  Label,
-} from "reactstrap";
+  Label
+} from 'reactstrap';
 // core components
 
 const AddArticle = ({ openModal, handleModal, getArticles }) => {
   let [blog, setBlog] = useState({ is_featured: false });
-  let [content, setContent] = useState("");
+  let [content, setContent] = useState('');
 
   const handleFileChange = (e) => {
     setBlog({ ...blog, blog_images: e.target.files[0] });
@@ -42,17 +42,17 @@ const AddArticle = ({ openModal, handleModal, getArticles }) => {
     for (const property in blog) {
       formData.append(property, blog[property]);
     }
-    formData.append("blog_content", content);
-    // console.log("blog_content", formData);
+    formData.append('blog_content', content);
+
     // console.log("blog_content", content);
-    api("post", "/blogs", formData)
+    api('post', '/blogs', formData)
       .then((res) => {
-        toast.success("Article added successfully");
+        toast.success('Article added successfully');
         getArticles();
         handleModal();
       })
       .catch(() => {
-        toast.error("An error occurred");
+        toast.error('An error occurred');
       });
   };
 
@@ -68,7 +68,7 @@ const AddArticle = ({ openModal, handleModal, getArticles }) => {
               <Form>
                 <div className="pl-lg-4">
                   <Row>
-                    <Col lg="9" style={{ margin: "auto" }}>
+                    <Col lg="9" style={{ margin: 'auto' }}>
                       <FormGroup>
                         <label
                           className="form-control-label"
@@ -89,7 +89,7 @@ const AddArticle = ({ openModal, handleModal, getArticles }) => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col lg="9" style={{ margin: "auto" }}>
+                    <Col lg="9" style={{ margin: 'auto' }}>
                       <FormGroup>
                         <label
                           className="form-control-label"
@@ -110,7 +110,7 @@ const AddArticle = ({ openModal, handleModal, getArticles }) => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col lg="9" style={{ margin: "auto" }}>
+                    <Col lg="9" style={{ margin: 'auto' }}>
                       <FormGroup>
                         <label
                           className="form-control-label"
@@ -132,7 +132,7 @@ const AddArticle = ({ openModal, handleModal, getArticles }) => {
                   </Row>
                   {/* <div className="pl-lg-4"> */}
                   <Row>
-                    <Col lg="9" style={{ margin: "auto" }}>
+                    <Col lg="9" style={{ margin: 'auto' }}>
                       <FormGroup>
                         <label
                           className="form-control-label"
@@ -151,7 +151,7 @@ const AddArticle = ({ openModal, handleModal, getArticles }) => {
                   </Row>
                   {/* </div> */}
                   <Row>
-                    <Col lg="9" style={{ margin: "auto" }}>
+                    <Col lg="9" style={{ margin: 'auto' }}>
                       <FormGroup>
                         <label
                           className="form-control-label"
@@ -184,7 +184,7 @@ const AddArticle = ({ openModal, handleModal, getArticles }) => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col lg="9" style={{ margin: "auto" }}>
+                    <Col lg="9" style={{ margin: 'auto' }}>
                       <FormGroup>
                         <div className="custom-control custom-control-alternative custom-checkbox mb-3">
                           <input

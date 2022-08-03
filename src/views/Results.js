@@ -56,12 +56,6 @@ const Results = () => {
       setLoading(false);
     }
   };
-  {
-    console.log('page is ', page);
-  }
-  {
-    console.log('total page is ', Math.ceil(count / 50));
-  }
   const setPageresult = ({ selected }) => {
     console.log(selected === 0 ? 1 : selected);
     console.log('selected result', selected);

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Store, UpdateStore } from "StoreContext";
-import api from "api";
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Store, UpdateStore } from 'StoreContext';
+import api from 'api';
+import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import {
   Badge,
@@ -21,11 +21,11 @@ import {
   Pagination,
   PaginationItem,
   PaginationLink,
-  UncontrolledTooltip,
-} from "reactstrap";
+  UncontrolledTooltip
+} from 'reactstrap';
 
 // core components
-import Header from "components/Headers/Header.js";
+import Header from 'components/Headers/Header.js';
 
 const SingleUser = () => {
   const { id } = useParams();
@@ -41,14 +41,14 @@ const SingleUser = () => {
 
   let getUserResult = async () => {
     setLoading(true);
-    let res = await api("get", `/admin/results/single-result/${id}`);
+    let res = await api('get', `/admin/results/single-result/${id}`);
     if (res) {
-      console.log("singleUserResult", res);
+      console.log('singleUserResult', res);
       updateStore({ singleUserResult: res?.result });
       setLoading(false);
     }
   };
-  console.log("singleResults", singleUserResult);
+  console.log('singleResults', singleUserResult);
   return (
     <>
       <Header />
@@ -80,7 +80,7 @@ const SingleUser = () => {
                             {/* {course.courseId.course_name} */}
                             {course.courseId?.course_name.length > 60
                               ? course.courseId?.course_name.substring(0, 60) +
-                                "..."
+                                '...'
                               : course.courseId?.course_name}
                           </td>
 
