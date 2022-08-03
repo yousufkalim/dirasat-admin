@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Store, UpdateStore } from "StoreContext";
-import api from "api";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import ReactPaginate from "react-paginate";
+import React, { useState, useEffect, useRef } from 'react';
+import { Store, UpdateStore } from 'StoreContext';
+import api from 'api';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 
 import {
   Badge,
@@ -22,12 +22,12 @@ import {
   Pagination,
   PaginationItem,
   PaginationLink,
-  UncontrolledTooltip,
-} from "reactstrap";
+  UncontrolledTooltip
+} from 'reactstrap';
 
 // core components
-import Header from "components/Headers/Header.js";
-import ExportExecl from "views/exportfiles/ExportExecl.js";
+import Header from 'components/Headers/Header.js';
+import ExportExecl from 'views/exportfiles/ExportExecl.js';
 const Users = () => {
   const updateStore = UpdateStore();
   const pagination = useRef();
@@ -46,7 +46,7 @@ const Users = () => {
   let getAllUsers = async () => {
     setLoading(true);
     let res = await api(
-      "get",
+      'get',
       `/admin/users/all-users?pageNumber=${page}&pageSize=${10}`
     );
     if (res) {
@@ -66,21 +66,20 @@ const Users = () => {
 
   // Exporting
   const myHeader = [
-    "Prénom",
-    "Nom",
-    "Date de naissance",
-    "addresse",
-    "email",
-    "phone",
-    "Classe",
-    "Établissement actuel",
+    'Prénom',
+    'Nom',
+    'Date de naissance',
+    'addresse',
+    'email',
+    'phone',
+    'Classe',
+    'Établissement actuel'
   ];
   const setPageis = ({ selected }) => {
     console.log(selected === 0 ? 1 : selected);
-    console.log("selected", selected);
+    console.log('selected', selected);
     setPage(selected);
   };
-
   return (
     <>
       <Header />

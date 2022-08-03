@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Store, UpdateStore } from "StoreContext";
-import api from "api";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import ReactPaginate from "react-paginate";
+import React, { useState, useEffect, useRef } from 'react';
+import { Store, UpdateStore } from 'StoreContext';
+import api from 'api';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 
 import {
   Badge,
@@ -22,11 +22,11 @@ import {
   Pagination,
   PaginationItem,
   PaginationLink,
-  UncontrolledTooltip,
-} from "reactstrap";
+  UncontrolledTooltip
+} from 'reactstrap';
 
 // core components
-import Header from "components/Headers/Header.js";
+import Header from 'components/Headers/Header.js';
 const Results = () => {
   const updateStore = UpdateStore();
   const history = useHistory();
@@ -46,28 +46,22 @@ const Results = () => {
   let getAllResults = async () => {
     setLoading(true);
     let res = await api(
-      "get",
+      'get',
       `/admin/results/get-results?pageNumber=${page}&pageSize=${20}`
     );
-    console.log("resis", results);
+    console.log('resis', results);
     if (res) {
       updateStore({ results: res?.results });
       setCount(res?.totalResults);
       setLoading(false);
     }
   };
-  // console.log("results are", results);
+  console.log('results are', results);
+  // console.log("total page is ", Math.ceil(count / 50));
 
-  {
-    console.log("page is ", page);
-  }
-
-  {
-    console.log("total page is ", Math.ceil(count / 50));
-  }
   const setPageresult = ({ selected }) => {
     console.log(selected === 0 ? 1 : selected);
-    console.log("selected result", selected);
+    console.log('selected result', selected);
     setPage(selected);
   };
   return (
@@ -164,30 +158,30 @@ const Results = () => {
                         <span className="sr-only">Previous</span>
                       </PaginationLink>
                     </PaginationItem>
-                    <PaginationItem className={`${page == 0 && "active"}`}>
+                    <PaginationItem className={`${page == 0 && 'active'}`}>
                       <PaginationLink onClick={(e) => setPage(0)}>
                         1
                       </PaginationLink>
                     </PaginationItem>
-                    <PaginationItem className={`${page == 1 && "active"}`}>
+                    <PaginationItem className={`${page == 1 && 'active'}`}>
                       <PaginationLink onClick={(e) => setPage(1)}>
                         2 <span className="sr-only">(current)</span>
                       </PaginationLink>
                     </PaginationItem>
-                    <PaginationItem className={`${page == 2 && "active"}`}>
+                    <PaginationItem className={`${page == 2 && 'active'}`}>
                       <PaginationLink onClick={(e) => setPage(2)}>
                         3
                       </PaginationLink>
                     </PaginationItem>
                     {page > 2 && (
-                      <PaginationItem className={`${page > 2 && "active"}`}>
+                      <PaginationItem className={`${page > 2 && 'active'}`}>
                         <PaginationLink onClick={(e) => setPage(2)}>
                           {page + 1}
                         </PaginationLink>
                       </PaginationItem>
                     )}
 
-                    <PaginationItem className={`${page > 2 && "active"}`}>
+                    <PaginationItem className={`${page > 2 && 'active'}`}>
                       <PaginationLink
                         onClick={(e) => setPage((prev) => prev + 1)}
                       >

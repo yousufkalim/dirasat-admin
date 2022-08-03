@@ -1,10 +1,10 @@
-import React from "react";
-import * as FileSaver from "file-saver";
-import * as XLSX from "xlsx";
-import { useState } from "react";
-import api from "api";
+import React from 'react';
+import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
+import { useState } from 'react';
+import api from 'api';
 
-import { Button } from "reactstrap";
+import { Button } from 'reactstrap';
 
 // Component
 const ExportExecl = ({ Users, myHeader }) => {
@@ -13,17 +13,17 @@ const ExportExecl = ({ Users, myHeader }) => {
 
   // File Type
   const fileType =
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   // Extension
-  const fileExtension = ".xlsx";
+  const fileExtension = '.xlsx';
   const exportToCSV = (csvData, fileName) => {
     // Sorting
 
     const ws = XLSX.utils.json_to_sheet(csvData, { header: myHeader });
 
-    const wb = { Sheets: { users: ws }, SheetNames: ["users"] };
+    const wb = { Sheets: { users: ws }, SheetNames: ['users'] };
 
-    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
 
     const e_data = new Blob([excelBuffer], { type: fileType });
 
@@ -33,7 +33,7 @@ const ExportExecl = ({ Users, myHeader }) => {
   // exporting excel
   const handleSubmitExcel = async (Users) => {
     setLoading(true);
-    let res = await api("get", `/admin/users/getallusers`);
+    let res = await api('get', `/admin/users/getallusers`);
     if (res) {
       let filterUserResults = res.users.filter((user) => user);
       let updatedUsers;
@@ -42,12 +42,12 @@ const ExportExecl = ({ Users, myHeader }) => {
           return {
             Prénom: user.first_name,
             Nom: user.last_name,
-            "Date de naissance": new Date(user.date_of_birth).toLocaleString(),
+            'Date de naissance': new Date(user.date_of_birth).toLocaleString(),
             addresse: user.address?.label,
             email: user.email,
             phone: user.phone,
             Classe: user.education_level,
-            "Établissement actuel": user.institute,
+            'Établissement actuel': user.institute
             // domain: user?.userResult?.domain,
             // Last_answer: user?.userResult?.last_answer,
             // Type_of_job: user?.userResult?.type_of_job,
@@ -56,7 +56,7 @@ const ExportExecl = ({ Users, myHeader }) => {
       }
       setLoading(false);
       // console.log("users for export ", updatedUsers);
-      exportToCSV(updatedUsers, " données des utilisateurs");
+      exportToCSV(updatedUsers, ' données des utilisateurs');
     }
   };
 
@@ -73,7 +73,7 @@ const ExportExecl = ({ Users, myHeader }) => {
         size="md"
         disabled={loading}
       >
-        {loading ? "Chargement en cours" : "Exporter excel"}
+        {loading ? 'Chargement en cours' : 'Exporter excel'}
       </Button>
     </div>
   );
