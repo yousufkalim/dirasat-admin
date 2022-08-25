@@ -49,7 +49,7 @@ const Results = () => {
       'get',
       `/admin/results/get-results?pageNumber=${page}&pageSize=${20}`
     );
-    console.log('resis', results);
+
     if (res) {
       updateStore({ results: res?.results });
       setCount(res?.totalResults);
@@ -58,9 +58,11 @@ const Results = () => {
   };
   const setPageresult = ({ selected }) => {
     console.log(selected === 0 ? 1 : selected);
-    console.log('selected result', selected);
     setPage(selected);
   };
+  // Exporting
+  const myHeader = ['Email', 'Domaine', "type d'emplois", 'Last Answer'];
+
   return (
     <>
       <Header />
@@ -80,6 +82,8 @@ const Results = () => {
                     <th scope="col">Email</th>
                     <th scope="col">Domaine</th>
                     <th scope="col">type d'emplois</th>
+                    <th scope="col">Last Answer</th>
+
                     <th scope="col" />
                   </tr>
                 </thead>
@@ -90,6 +94,7 @@ const Results = () => {
                         <td title={result.user.email}>{result.user.email}</td>
                         <td title={result.domain}>{result.domain}</td>
                         <td title={result.type_of_job}>{result.type_of_job}</td>
+                        <td title={result.last_answer}>{result.last_answer}</td>
 
                         <td className="text-right">
                           <UncontrolledDropdown>

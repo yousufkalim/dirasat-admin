@@ -55,7 +55,6 @@ const Users = () => {
       setLoading(false);
     }
   };
-  // console.log("users are", Users);
   // {
   //   console.log("page is ", page);
   // }
@@ -65,19 +64,9 @@ const Users = () => {
   // }
 
   // Exporting
-  const myHeader = [
-    'Prénom',
-    'Nom',
-    'Date de naissance',
-    'addresse',
-    'email',
-    'phone',
-    'Classe',
-    'Établissement actuel'
-  ];
+  const myHeader = ['Prénom', 'Nom', 'Date de naissance', 'email', 'phone'];
   const setPageis = ({ selected }) => {
     console.log(selected === 0 ? 1 : selected);
-    console.log('selected', selected);
     setPage(selected);
   };
   return (
@@ -89,7 +78,8 @@ const Users = () => {
           <div className="col">
             <Card className="shadow">
               <CardHeader className="border-0">
-                <ExportExecl Users={Users} myHeader={myHeader} />
+                <h3 className="mb-0">Utilisateurs</h3>
+                <ExportExecl Users={Users} myHeader={myHeader} page={page} />
               </CardHeader>
 
               <Table className="align-items-center table-flush" responsive>

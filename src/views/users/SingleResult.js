@@ -23,6 +23,7 @@ import {
   PaginationLink,
   UncontrolledTooltip
 } from 'reactstrap';
+import ExportResult from 'views/exportfiles/ExportResult.js';
 
 // core components
 import Header from 'components/Headers/Header.js';
@@ -48,6 +49,10 @@ const SingleUser = () => {
       setLoading(false);
     }
   };
+
+  const myHeader = ['Prénom', 'Nom', 'Date de naissance', 'email', 'phone'];
+  console.log('get single user result', singleUserResult);
+
   console.log('singleResults', singleUserResult);
   return (
     <>
@@ -60,56 +65,78 @@ const SingleUser = () => {
               {loading ? (
                 <h1>chargement du résultat d'un seul utilisateur...</h1>
               ) : (
-                <Table className="align-items-center table-flush" responsive>
-                  <thead className="thead-light">
-                    <tr>
-                      <th scope="col">courseName</th>
-                      <th scope="col">percentage</th>
-                      <th scope="col">selectivity</th>
-                      <th scope="col">cost</th>
-                      <th scope="col">language</th>
-                      <th scope="col">duration</th>
-                      <th scope="col">distance</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {singleUserResult?.courses.map((course) => {
-                      return (
-                        <tr>
-                          <td title={1}>
-                            {/* {course.courseId.course_name} */}
-                            {course.courseId?.course_name.length > 60
-                              ? course.courseId?.course_name.substring(0, 60) +
-                                '...'
-                              : course.courseId?.course_name}
-                          </td>
+                <>
+                  {singleUserResult?.dcourses?.length >= 1 ? (
+                    <>
+                      <CardHeader className="border-0">
+                        <h3 className="mb-0">Résultat</h3>
+                        <ExportResult
+                          id={singleUserResult?.user}
+                          myHeader={myHeader}
+                        />
+                      </CardHeader>
+                      <Table
+                        className="align-items-center table-flush"
+                        responsive
+                      >
+                        <thead className="thead-light">
+                          <tr>
+                            <th scope="col">Establishment</th>
+                            <th scope="col">Curriculum</th>
+                            <th scope="col">Speciality</th>
+                            <th scope="col">duration</th>
+                            <th scope="col">cost</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {singleUserResult?.dcourses?.map((course) => {
+                            return (
+                              <tr>
+                                <td title={1}>
+                                  {/* {course.courseId.course_name} */}
+                                  {course?.dcourseId?.Establishment.length > 60
+                                    ? course?.dcourseId?.Establishment.substring(
+                                        0,
+                                        60
+                                      ) + '...'
+                                    : course.dcourseId?.Establishment +
+                                      '\n' +
+                                      course.dcourseId?.Speciality}
+                                </td>
 
-                          <td title={course.percentage}>{course.percentage}</td>
+                                <td title={course.dcourseId?.Curriculum}>
+                                  {course.dcourseId.Curriculum}
+                                </td>
 
-                          <td title={course.selectivityrating}>
-                            {course.selectivityrating.substring(0, 1)}
-                          </td>
+                                {/* <td title={course.dcourseId.Guardianship}>
+                            {course.dcourseId.Guardianship}
+                          </td> */}
 
-                          <td title={course.courseId?.cost}>
-                            {course.courseId?.cost.substring(0, 1)}
-                          </td>
+                                <td title={course.dcourseId?.Speciality}>
+                                  {course.dcourseId?.Speciality}
+                                </td>
 
-                          <td title={course.courseId?.languagestar}>
-                            {course.courseId?.languagestar.substring(0, 1)}
-                          </td>
+                                {/* <td title={course.dcourseId?.bacSerie}>
+                            {course.dcourseId?.bacSerie}
+                          </td> */}
 
-                          <td title={course.courseId?.duration}>
-                            {course.courseId?.duration.substring(0, 1)}
-                          </td>
+                                <td title={course.dcourseId?.duration}>
+                                  {course.dcourseId?.duration}
+                                </td>
 
-                          <td title={course.distancerating}>
-                            {course.distancerating}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </Table>
+                                <td title={course.dcourseId.cost}>
+                                  {course.dcourseId.cost}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </Table>
+                    </>
+                  ) : (
+                    <h1>Aucun cours disponible pour ce résultat</h1>
+                  )}
+                </>
               )}
             </Card>
           </div>
