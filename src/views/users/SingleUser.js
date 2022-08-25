@@ -43,12 +43,10 @@ const SingleUser = () => {
     setLoading(true);
     let res = await api('get', `/admin/results/user-results/${id}`);
     if (res) {
-      console.log('res', res);
       updateStore({ singleUserResults: res?.result });
       setLoading(false);
     }
   };
-  console.log('singleUserResults are', singleUserResults);
 
   return (
     <>
@@ -76,11 +74,11 @@ const SingleUser = () => {
                       return (
                         <tr>
                           <td title={user.user.email}>{user.user.email}</td>
-                          <td title={user.domain}>{user.domain}}</td>
+                          <td title={user.domain}>{user.domain}</td>
                           <td title={user.type_of_job}>{user.type_of_job}</td>
 
                           <td className="text-right">
-                            <UncontrolledDropdown>
+                            {/* <UncontrolledDropdown>
                               <DropdownToggle
                                 className="btn-icon-only text-light"
                                 href="#pablo"
@@ -97,13 +95,15 @@ const SingleUser = () => {
                               >
                                 <DropdownItem
                                   onClick={() =>
-                                    history.push(`/admin/result/${user._id}`)
+                                    history.push(
+                                      `/admin/result/${user?.user?.results[0]}`
+                                    )
                                   }
                                 >
                                   Voir résultat
                                 </DropdownItem>
                               </DropdownMenu>
-                            </UncontrolledDropdown>
+                            </UncontrolledDropdown> */}
                           </td>
                         </tr>
                       );
