@@ -44,6 +44,7 @@ const SingleUser = () => {
     setLoading(true);
     let res = await api('get', `/admin/results/single-result/${id}`);
     if (res) {
+      console.log('singleUserResult', res);
       updateStore({ singleUserResult: res?.result });
       setLoading(false);
     }
@@ -52,6 +53,7 @@ const SingleUser = () => {
   const myHeader = ['Prénom', 'Nom', 'Date de naissance', 'email', 'phone'];
   console.log('get single user result', singleUserResult);
 
+  console.log('singleResults', singleUserResult);
   return (
     <>
       <Header />

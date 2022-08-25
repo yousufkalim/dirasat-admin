@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "orientator-admin",
+    "site": "dirasat-admin",
     "public": "build",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [

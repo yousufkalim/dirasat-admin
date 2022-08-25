@@ -56,7 +56,6 @@ const Results = () => {
       setLoading(false);
     }
   };
-
   const setPageresult = ({ selected }) => {
     console.log(selected === 0 ? 1 : selected);
     setPage(selected);

@@ -69,7 +69,6 @@ const Users = () => {
     console.log(selected === 0 ? 1 : selected);
     setPage(selected);
   };
-
   return (
     <>
       <Header />
