@@ -12,8 +12,7 @@ const ExportExecl = ({ Users, myHeader, page }) => {
   // Exporting
 
   // File Type
-  const fileType =
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+  const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   // Extension
   const fileExtension = '.xlsx';
   const exportToCSV = (csvData, fileName) => {
@@ -23,6 +22,18 @@ const ExportExecl = ({ Users, myHeader, page }) => {
       { wch: 20 },
       { wch: 20 },
       { wch: 35 },
+      { wch: 28 },
+      { wch: 28 },
+      { wch: 28 },
+      { wch: 28 },
+      { wch: 28 },
+      { wch: 28 },
+      { wch: 20 },
+      { wch: 28 },
+      { wch: 28 },
+      { wch: 28 },
+      { wch: 28 },
+      { wch: 28 },
       { wch: 28 },
       { wch: 35 },
       { wch: 50 },
@@ -38,7 +49,7 @@ const ExportExecl = ({ Users, myHeader, page }) => {
       { wch: 43 },
       { wch: 31 },
       { wch: 30 },
-      { wch: 30 }
+      { wch: 30 },
     ];
     // Sorting
 
@@ -49,8 +60,8 @@ const ExportExecl = ({ Users, myHeader, page }) => {
         alignment: {
           vertical: 'center',
           horizontal: 'center',
-          wrapText: '1' // any truthy value here
-        }
+          wrapText: '1', // any truthy value here
+        },
       }
     );
     ws['!cols'] = wscols;
@@ -79,31 +90,34 @@ const ExportExecl = ({ Users, myHeader, page }) => {
           return {
             Prénom: user.first_name,
             Nom: user.last_name,
-            'Date de naissance': new Date(user.date_of_birth).toLocaleString(),
+            'Date de naissance': new Date(user.date_of_birth).toLocaleDateString(),
             email: user.email,
             phone: user.phone,
+            wilaya: user.wilaya?.name + '-' + user.wilaya?.code,
+            classe: user.class_list,
+            'Bac Serie': user.Bac_Serie,
+            'Ville de établissement scolaire': user.school_city,
+            'Nom de votre école': user.school_name,
+            'Note obtenue': user.score !== 'score' ? user.score : '',
+            ["Type d'étude"]: user.continueStudy ? 'Abroad' : user.stayAlgeria ? 'Algeria' : '',
+            pays: user.continueStudy ? user.whichCountry : '',
+            ville: user.continueStudy ? user.ville : '',
+            budget: user.continueStudy ? user.budget : '',
+            'dernier diplôme': user.stayAlgeria ? user.lastDiploma : '',
+            "année d'études": user.stayAlgeria ? user.studyYear : '',
+            "date d'essai": new Date(user?.userResult?.createdAt).toLocaleString(),
             Last_answer: user?.userResult?.last_answer,
             Type_of_job: user?.userResult?.type_of_job,
-            [user?.userResult?.question[0]?.question || '']:
-              user?.userResult?.desc_answers[0]?.answer || '',
-            [user?.userResult?.question[1]?.question || '']:
-              user?.userResult?.desc_answers[1]?.answer || '',
-            [user?.userResult?.question[2]?.question || '']:
-              user?.userResult?.desc_answers[2]?.answer || '',
-            [user?.userResult?.question[3]?.question || '']:
-              user?.userResult?.desc_answers[3]?.answer || '',
-            [user?.userResult?.question[4]?.question || '']:
-              user?.userResult?.desc_answers[4]?.answer || '',
-            [user?.userResult?.question[5]?.question || '']:
-              user?.userResult?.desc_answers[5]?.answer || '',
-            [user?.userResult?.question[6]?.question || '']:
-              user?.userResult?.desc_answers[6]?.answer || '',
-            [user?.userResult?.question[7]?.question || '']:
-              user?.userResult?.desc_answers[7]?.answer || '',
-            [user?.userResult?.question[8]?.question || '']:
-              user?.userResult?.desc_answers[8]?.answer || '',
-            [user?.userResult?.question[9]?.question || '']:
-              user?.userResult?.desc_answers[9]?.answer || ''
+            [user?.userResult?.question[0]?.question || '']: user?.userResult?.desc_answers[0]?.answer || '',
+            [user?.userResult?.question[1]?.question || '']: user?.userResult?.desc_answers[1]?.answer || '',
+            [user?.userResult?.question[2]?.question || '']: user?.userResult?.desc_answers[2]?.answer || '',
+            [user?.userResult?.question[3]?.question || '']: user?.userResult?.desc_answers[3]?.answer || '',
+            [user?.userResult?.question[4]?.question || '']: user?.userResult?.desc_answers[4]?.answer || '',
+            [user?.userResult?.question[5]?.question || '']: user?.userResult?.desc_answers[5]?.answer || '',
+            [user?.userResult?.question[6]?.question || '']: user?.userResult?.desc_answers[6]?.answer || '',
+            [user?.userResult?.question[7]?.question || '']: user?.userResult?.desc_answers[7]?.answer || '',
+            [user?.userResult?.question[8]?.question || '']: user?.userResult?.desc_answers[8]?.answer || '',
+            [user?.userResult?.question[9]?.question || '']: user?.userResult?.desc_answers[9]?.answer || '',
           };
         });
       }
