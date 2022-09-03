@@ -1,5 +1,5 @@
-baseUrl = 'http://localhost:5000/api/';
-mediaUrl = 'http://localhost:5000/';
+let baseUrl = 'http://localhost:5000/api/';
+let mediaUrl = 'http://localhost:5000/';
 if (window.location.host === 'dirasat-admin-dev.falconweb.app') {
   baseUrl = 'https://dirasat-api-dev.falconweb.app/api/';
   mediaUrl = 'https://dirasat-api-dev.falconweb.app/';
