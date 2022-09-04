@@ -1,7 +1,7 @@
 // Init
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { baseUrl } from '../../config';
+import { baseUrl } from 'config';
 
 const api = async (method = 'get', uri, body) => {
   // API Call
