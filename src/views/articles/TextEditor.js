@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import JoditEditor from 'jodit-react';
+import { baseUrl, mediaUrl } from 'config';
+
 export default function Index(props) {
   const editor = useRef(null);
   const config = {
@@ -9,7 +11,7 @@ export default function Index(props) {
     readonly: false,
     enableDragAndDropFileToEditor: true,
     uploader: {
-      url: `${process.env.REACT_APP_SERVER_URL}/images`,
+      url: `${baseUrl}/images`,
       format: 'json',
       pathVariableName: 'path',
       filesVariableName: function (t) {
@@ -25,7 +27,7 @@ export default function Index(props) {
       },
       process: function (resp) {
         return {
-          file: `${process.env.REACT_APP_SERVER_MEDIA_URL}${resp.image}` || []
+          file: `${mediaUrl}${resp.image}` || [],
         };
       },
       defaultHandlerSuccess: function (data) {
@@ -33,7 +35,7 @@ export default function Index(props) {
         if (data.file) {
           this.selection.insertImage(data.file);
         }
-      }
+      },
     },
     buttons: [
       'bold',
@@ -61,7 +63,7 @@ export default function Index(props) {
       'redo',
       '|',
       'hr',
-      '|'
+      '|',
     ],
     buttonsMD: [
       'bold',
@@ -89,7 +91,7 @@ export default function Index(props) {
       'redo',
       '|',
       'hr',
-      '|'
+      '|',
     ],
     buttonsSM: [
       'bold',
@@ -117,7 +119,7 @@ export default function Index(props) {
       'redo',
       '|',
       'hr',
-      '|'
+      '|',
     ],
     buttonsXS: [
       'bold',
@@ -145,8 +147,8 @@ export default function Index(props) {
       'redo',
       '|',
       'hr',
-      '|'
-    ]
+      '|',
+    ],
   };
   return (
     <JoditEditor
